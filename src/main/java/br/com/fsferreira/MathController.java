@@ -19,6 +19,55 @@ public class MathController {
 		return convertToDouble(numberOne) + convertToDouble(numberTwo);
 	}
 
+	@GetMapping(value = "/sub/{numberOne}/{numberTwo}")
+	public Double sub(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo)
+			throws Exception {
+
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return convertToDouble(numberOne) - convertToDouble(numberTwo);
+	}
+
+	@GetMapping(value = "/times/{numberOne}/{numberTwo}")
+	public Double times(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo)
+			throws Exception {
+
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return convertToDouble(numberOne) * convertToDouble(numberTwo);
+	}
+
+	@GetMapping(value = "/by/{numberOne}/{numberTwo}")
+	public Double by(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo)
+			throws Exception {
+
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return convertToDouble(numberOne) / convertToDouble(numberTwo);
+	}
+
+	@GetMapping(value = "/mean/{numberOne}/{numberTwo}")
+	public Double mean(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo)
+			throws Exception {
+
+		if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return (convertToDouble(numberOne) + convertToDouble(numberTwo)) / 2;
+	}
+
+	@GetMapping(value = "/sqrt/{number}")
+	public Double sqrt(@PathVariable("number") String number) throws Exception {
+
+		if (!isNumeric(number)) {
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return Math.sqrt(convertToDouble(number));
+	}
+
 	private boolean isNumeric(String strNumber) {
 		if (strNumber == null)
 			return false;
