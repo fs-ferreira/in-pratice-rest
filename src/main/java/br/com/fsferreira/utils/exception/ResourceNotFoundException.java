@@ -1,4 +1,4 @@
-package br.com.fsferreira.exceptions;
+package br.com.fsferreira.utils.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

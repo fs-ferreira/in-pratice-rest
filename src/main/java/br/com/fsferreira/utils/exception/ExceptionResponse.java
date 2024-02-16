@@ -1,4 +1,4 @@
-package br.com.fsferreira.exceptions;
+package br.com.fsferreira.utils.exception;
 
 import java.io.Serializable;
 import java.util.Date;

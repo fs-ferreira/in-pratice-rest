@@ -1,7 +1,8 @@
-package br.com.fsferreira.controllers;
+package br.com.fsferreira.controller;
 
 import java.util.List;
 
+import br.com.fsferreira.dto.PersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fsferreira.model.Person;
-import br.com.fsferreira.services.PersonService;
+import br.com.fsferreira.service.PersonService;
 
 @RestController
 @RequestMapping("/person")
@@ -25,22 +26,22 @@ public class PersonController {
 	PersonService service;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> findAll() {
+	public List<PersonDTO> findAll() {
 		return service.findAll();
 	}
 
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person findById(@PathVariable("id") Long id) {
+	public PersonDTO findById(@PathVariable("id") Long id) {
 		return service.findById(id);
 	}
 
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Person create(@RequestBody Person person) {
+	public PersonDTO create(@RequestBody PersonDTO person) {
 		return service.create(person);
 	}
 
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Person update(@RequestBody Person person) {
+	public PersonDTO update(@RequestBody PersonDTO person) {
 		return service.update(person);
 	}
 
